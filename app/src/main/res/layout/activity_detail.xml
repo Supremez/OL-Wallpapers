@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.saulmm.openlibra.views.views.ObservableScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+    android:background="#fff">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/activity_detail_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="248dp"
+            android:layout_height="440dp"
             android:minHeight="?attr/actionBarSize"
             >
 
             <ImageView
                 android:id="@+id/activity_detail_cover"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                />
+                android:layout_height="440dp"
+                android:adjustViewBounds="false"
+                android:alpha="0" />
         </android.support.v7.widget.Toolbar>
         <FrameLayout
             android:id="@+id/activity_detail_main_container"
@@ -35,7 +30,7 @@
             android:layout_below="@id/activity_detail_toolbar"
             android:elevation="4dp"
             android:background="?colorPrimary"
-            >
+            android:layout_alignParentBottom="true">
 
             <RelativeLayout
                 android:id="@+id/activity_detail_titles_container"
@@ -65,7 +60,7 @@
                     android:layout_below="@id/activity_detail_title"
                     android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="The best subtitle"
+                    android:text="Set Wallpaper"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textColor="#FFF"
@@ -104,53 +99,4 @@
 
         </FrameLayout>
 
-        <LinearLayout
-            android:id="@+id/activity_detail_book_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:background="#EEEEEE"
-            android:layout_below="@id/activity_detail_main_container"
-            >
-
-            <TextView
-                android:id="@+id/activity_detail_summary_title"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Summary"
-                style="@style/OpenLibraHeaderTextView"
-                />
-
-            <TextView
-                android:id="@+id/activity_detail_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp"
-                android:lineSpacingExtra="6dp"
-                android:text="@string/lorem"
-                />
-
-            <TextView
-                android:id="@+id/activity_detail_rating_title"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Rating"
-                style="@style/OpenLibraHeaderTextView"
-                />
-
-            <TextView
-                android:id="@+id/activity_detail_rating_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:textAllCaps="true"
-                android:textSize="50sp"
-                android:text="7.9"
-                />
-        </LinearLayout>
     </RelativeLayout>
-</com.saulmm.openlibra.views.views.ObservableScrollView>
-

@@ -17,7 +17,7 @@
         />
 
     <fragment
-        android:name="com.saulmm.openlibra.fragments.BooksFragment"
+        android:name="com.arthurmb.recyclerviewtest.fragments.BooksFragment"
         android:id="@+id/ly_last_books_fragment"
         android:layout_gravity="center"
         android:layout_height="match_parent"
@@ -25,5 +25,4 @@
         />
 
 </FrameLayout>
-
 

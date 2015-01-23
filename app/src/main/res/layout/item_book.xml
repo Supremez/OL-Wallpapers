@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
-        android:layout_width="196dp"
-        android:layout_height="248dp"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <com.arthurmb.recyclerviewtest.SquaredImage
             android:id="@+id/item_book_img"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="192dp"
             android:transitionName="bookCover"
-            android:scaleType="centerCrop"
-            android:background="@color/book_without_palette"/>
+            android:background="@color/book_without_palette"
+            android:contentDescription="item_image"
+            android:scaleType="centerCrop" />
 
         <FrameLayout
             android:id="@+id/item_book_text_container"
@@ -45,7 +45,7 @@
                     android:lines="1"
                     android:ellipsize="end"
                     android:textSize="16sp"
-                    android:text="test"
+                    android:text="Wallpaper"
                     />
 
                 <TextView
