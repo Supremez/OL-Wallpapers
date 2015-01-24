@@ -9,6 +9,7 @@ import com.arthurmb.recyclerviewtest.R;
 import com.arthurmb.recyclerviewtest.fragments.BooksFragment;
 
 
+
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -20,7 +21,10 @@ public class MainActivity extends ActionBarActivity {
         toolbar.setTitleTextColor(Color.WHITE);
 
 
-        BooksFragment booksFragment = (BooksFragment) getFragmentManager().findFragmentById(R.id.ly_last_books_fragment);
+
+
+        BooksFragment booksFragment = (com.arthurmb.recyclerviewtest.fragments.BooksFragment) getFragmentManager().findFragmentById(R.id.fragment_last_books_recycler);
+
         booksFragment.setToolbar(toolbar);
 
         setSupportActionBar(toolbar);

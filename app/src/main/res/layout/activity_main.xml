@@ -17,8 +17,13 @@
         />
 
     <fragment
+<<<<<<< HEAD
         android:name="com.arthurmb.recyclerviewtest.fragments.BooksFragment"
         android:id="@+id/ly_last_books_fragment"
+=======
+        android:id="@+id/activity_main_last_books_fragment"
+        android:name="com.saulmm.openlibra.fragments.BooksFragment"
+>>>>>>> FETCH_HEAD
         android:layout_gravity="center"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
