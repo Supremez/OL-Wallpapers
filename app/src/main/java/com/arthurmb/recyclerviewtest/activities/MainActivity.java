@@ -9,7 +9,6 @@ import com.arthurmb.recyclerviewtest.R;
 import com.arthurmb.recyclerviewtest.fragments.BooksFragment;
 
 
-
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -22,10 +21,10 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-
-        BooksFragment booksFragment = (com.arthurmb.recyclerviewtest.fragments.BooksFragment) getFragmentManager().findFragmentById(R.id.fragment_last_books_recycler);
-
+        BooksFragment booksFragment = (BooksFragment) getFragmentManager().findFragmentById(R.id.activity_main_last_books_fragment);
         booksFragment.setToolbar(toolbar);
+
+
 
         setSupportActionBar(toolbar);
     }

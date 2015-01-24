@@ -97,8 +97,8 @@ public class BookAdapter extends RecyclerView.Adapter<BooksViewHolder> {
 
                 if (vibrantSwatch != null) {
 
-                    viewHolder.bookTitle.setTextColor(vibrantSwatch.getTitleTextColor());
-                    viewHolder.bookAuthor.setTextColor(vibrantSwatch.getTitleTextColor());
+                    //viewHolder.bookTitle.setTextColor(vibrantSwatch.getTitleTextColor());
+                    //viewHolder.bookAuthor.setTextColor(vibrantSwatch.getTitleTextColor());
                     viewHolder.bookCover.setTransitionName("cover" + position);
                     viewHolder.bookTextcontainer.setBackgroundColor(vibrantSwatch.getRgb());{
                         //@Override
