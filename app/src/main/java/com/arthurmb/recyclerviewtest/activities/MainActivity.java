@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.arthurmb.recyclerviewtest.R;
+import com.arthurmb.recyclerviewtest.fragments.BooksFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,6 +18,11 @@ public class MainActivity extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
+
+
+        BooksFragment booksFragment = (BooksFragment) getFragmentManager().findFragmentById(R.id.ly_last_books_fragment);
+        booksFragment.setToolbar(toolbar);
+
         setSupportActionBar(toolbar);
     }
 }

@@ -43,6 +43,8 @@ public class DetailActivity extends Activity {
 
     private Book selectedBook;
 
+    Bitmap bitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

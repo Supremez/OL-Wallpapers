@@ -70,13 +70,20 @@ public class BookAdapter extends RecyclerView.Adapter<BooksViewHolder> {
                 .setCallback(new FutureCallback<ImageViewBitmapInfo>() {
                     @Override
                     public void onCompleted(Exception e, ImageViewBitmapInfo result) {
-
-                        if (e == null && result != null && result.getBitmapInfo().bitmap != null) {
-
-                            setCellColors(result.getBitmapInfo().bitmap, booksViewHolder, position);
-                        }
+                        setCellColors(result.getBitmapInfo().bitmap, booksViewHolder,position);
                     }
                 });
+
+                //.setCallback(new FutureCallback<ImageViewBitmapInfo>() {
+                  //  @Override
+                   // public void onCompleted(Exception e, ImageViewBitmapInfo result) {
+
+                     //   if (e == null && result != null && result.getBitmapInfo().bitmap != null) {
+
+                       //     setCellColors(result.getBitmapInfo().bitmap, booksViewHolder, position);
+                      //  }
+                    //}
+               // });
     }
 
     public void setCellColors (Bitmap b, final BooksViewHolder viewHolder, final int position) {

@@ -17,7 +17,7 @@
             android:transitionName="bookCover"
             android:background="@color/book_without_palette"
             android:contentDescription="item_image"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitCenter" />
 
         <FrameLayout
             android:id="@+id/item_book_text_container"

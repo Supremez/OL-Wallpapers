@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Pair;
 import android.util.SparseArray;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.arthurmb.recyclerviewtest.OnItemClickListener;
@@ -33,6 +35,8 @@ import com.koushikdutta.ion.Ion;
 import java.io.StringReader;
 import java.util.ArrayList;
 
+import static android.support.v7.widget.RecyclerView.OnScrollListener;
+
 public class BooksFragment extends Fragment {
 
     public static SparseArray<Bitmap> photoCache = new SparseArray<Bitmap>(1);
@@ -40,6 +44,14 @@ public class BooksFragment extends Fragment {
     private ProgressDialog loadingDialog;
     private ArrayList<Book> books;
     private RecyclerView bookRecycler;
+    private Toolbar toolbar;
+    private int toolBarDefaultColor;
+    private int toolBarSemiTransColor;
+
+    public void setToolbar(Toolbar toolbar) {
+
+        this.toolbar = toolbar;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +63,7 @@ public class BooksFragment extends Fragment {
         int COLUMNS = 2;
         bookRecycler.setLayoutManager(new GridLayoutManager(getActivity(), COLUMNS));
         bookRecycler.addItemDecoration(new RecyclerInsetsDecoration(getActivity()));
+        bookRecycler.setOnScrollListener(recyclerScrollListener);
         bookRecycler.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -63,6 +76,9 @@ public class BooksFragment extends Fragment {
         loadingDialog = new ProgressDialog(getActivity());
         loadingDialog.setMessage(getResources().getString(R.string.loading_books));
         loadingDialog.show();
+
+        toolBarDefaultColor = getResources().getColor(R.color.color_primary);
+        toolBarSemiTransColor = getResources().getColor(R.color.color_primary_trans);
 
         // Load books from API
         Ion.with(getActivity())
@@ -131,4 +147,52 @@ public class BooksFragment extends Fragment {
             startActivity(detailIntent, options.toBundle());
         }
     };
+
+    private OnScrollListener recyclerScrollListener = new OnScrollListener() {
+        public int lastDy;
+        public boolean flag;
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+            super.onScrolled(recyclerView, dx, dy);
+
+            if (toolbar == null)
+                throw new IllegalStateException("BooksFragment has not a reference of the main toolbar");
+
+            // Is scrolling up
+            if (dy > 10) {
+
+                if (!flag) {
+
+                    showToolbar();
+                    flag = true;
+                }
+
+                // is scrolling down
+            } else if (dy < -10) {
+
+                if (flag) {
+
+                    hideToolbar();
+                    flag = false;
+                }
+            }
+
+            lastDy = dy;
+        }
+    };
+
+    private void showToolbar() {
+
+        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+                R.anim.translate_up_off));
+    }
+
+    private void hideToolbar() {
+
+        toolbar.startAnimation(AnimationUtils.loadAnimation(getActivity(),
+                R.anim.translate_up_on));
+    }
 }
+
