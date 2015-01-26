@@ -58,9 +58,12 @@ public class DetailActivity extends Activity {
         selectedBook = (Book) getIntent().getSerializableExtra("selected_book");
 
         // Recover book cover from BooksFragment cache
-        Bitmap bookCoverBitmap = BooksFragment.photoCache.get(position);
+
+        ImageView imageView = BooksFragment.photoCache.get(position);
+        Bitmap bitmap1 = imageView.getDrawingCache();
         ImageView toolbarBookCover = (ImageView) findViewById(R.id.activity_detail_cover);
-        toolbarBookCover.setImageBitmap(bookCoverBitmap);
+
+        toolbarBookCover.setImageBitmap(bitmap1);
 
         // Fab button
         fabButton.setScaleX(0);
@@ -72,14 +75,14 @@ public class DetailActivity extends Activity {
         Utils.configureHideYView(mainContaienr);
 
         // Define toolbar as the shared element
-        toolbar.setBackground(new BitmapDrawable(getResources(), bookCoverBitmap));
+        toolbar.setBackground(new BitmapDrawable(bitmap1));
         toolbar.setTransitionName("cover" + position);
 
         // Add a listener to get noticed when the transition ends to animate the fab button
         getWindow().getSharedElementEnterTransition().addListener(sharedTransitionListener);
 
         // Generate palette colors
-        Palette.generateAsync(bookCoverBitmap, paletteListener);
+        Palette.generateAsync(bitmap1, paletteListener);
     }
 
 

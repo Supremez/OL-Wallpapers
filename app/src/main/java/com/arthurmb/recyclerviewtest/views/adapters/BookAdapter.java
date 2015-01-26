@@ -2,23 +2,23 @@ package com.arthurmb.recyclerviewtest.views.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arthurmb.recyclerviewtest.OnItemClickListener;
 import com.arthurmb.recyclerviewtest.R;
 import com.arthurmb.recyclerviewtest.models.Book;
 import com.arthurmb.recyclerviewtest.views.Utils;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.ImageViewBitmapInfo;
-import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -62,27 +62,35 @@ public class BookAdapter extends RecyclerView.Adapter<BooksViewHolder> {
         //booksViewHolder.bookAuthor.setText(currentBook.getCover());
         booksViewHolder.bookCover.setDrawingCacheEnabled(true);
 
+        
 
-        Ion.with(context)
+
+        Picasso.with(context)
                 .load(books.get(position).getCover())
-                .intoImageView(booksViewHolder.bookCover)
-                .withBitmapInfo()
-                .setCallback(new FutureCallback<ImageViewBitmapInfo>() {
+                .into(booksViewHolder.bookCover, new Callback.EmptyCallback() {
                     @Override
-                    public void onCompleted(Exception e, ImageViewBitmapInfo result) {
-                        setCellColors(result.getBitmapInfo().bitmap, booksViewHolder,position);
+                    public void onSuccess() {
+
+                        final Bitmap bitmap = ((BitmapDrawable) booksViewHolder.bookCover.getDrawable()).getBitmap();
+                        setCellColors(bitmap, booksViewHolder,position);
+
+                    }
+
+                    @Override
+                    public void onError() {
+
                     }
                 });
-
-                //.setCallback(new FutureCallback<ImageViewBitmapInfo>() {
-                  //  @Override
+               // .withBitmapInfo()
+               // .setCallback(new FutureCallback<ImageViewBitmapInfo>() {
+                 //   @Override
                    // public void onCompleted(Exception e, ImageViewBitmapInfo result) {
 
                      //   if (e == null && result != null && result.getBitmapInfo().bitmap != null) {
 
                        //     setCellColors(result.getBitmapInfo().bitmap, booksViewHolder, position);
                       //  }
-                    //}
+                   // }
                // });
     }
 
@@ -127,7 +135,7 @@ public class BookAdapter extends RecyclerView.Adapter<BooksViewHolder> {
 
 class BooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    protected  FrameLayout bookTextcontainer;
+    protected  RelativeLayout bookTextcontainer;
     protected  ImageView bookCover;
     protected  TextView bookTitle;
     protected  TextView bookAuthor;
@@ -141,10 +149,10 @@ class BooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
 //        if (itemView != null) {
 
-        bookTextcontainer = (FrameLayout) itemView.findViewById(R.id.item_book_text_container);
+        bookTextcontainer = (RelativeLayout) itemView.findViewById(R.id.item_book_text_container);
         bookCover = (ImageView) itemView.findViewById(R.id.item_book_img);
         bookTitle = (TextView) itemView.findViewById(R.id.item_book_title);
-        bookAuthor = (TextView) itemView.findViewById(R.id.item_book_author);
+        //(bookAuthor = (TextView) itemView.findViewById(R.id.item_book_author);
         extraWall = (ImageView) itemView.findViewById(R.id.activity_detail_cover);
         bookCover.setOnClickListener(this);
 //        }

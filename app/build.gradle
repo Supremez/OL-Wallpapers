@@ -29,5 +29,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.squareup.picasso:picasso:2.3.4'
-
+    compile files('lib/Android-BitmapCache-2.3.jar')
 }

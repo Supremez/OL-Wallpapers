@@ -9,4 +9,7 @@ public class BookList {
     public ArrayList<Book> getWallpapers() {
         return wallpapers;
     }
+    public ArrayList<Book> getWall() {
+        return getWallpapers();
+    }
 }

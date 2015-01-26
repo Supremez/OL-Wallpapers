@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:foreground="?attr/selectableItemBackground">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="196dp"
+    android:layout_height="248dp"
+    android:orientation="vertical"
+    >
 
         <com.arthurmb.recyclerviewtest.SquaredImage
             android:id="@+id/item_book_img"
             android:layout_width="fill_parent"
-            android:layout_height="192dp"
+            android:layout_height="fill_parent"
             android:transitionName="bookCover"
             android:background="@color/book_without_palette"
             android:contentDescription="item_image"
-            android:scaleType="fitCenter" />
+            android:scaleType="centerCrop"
+            android:layout_gravity="center" />
 
-        <FrameLayout
-            android:id="@+id/item_book_text_container"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@color/book_without_palette"
-            >
+    <RelativeLayout
+        android:id="@+id/item_book_text_container"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/book_without_palette"
+        >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:elevation="10dp"
-                android:orientation="vertical"
-                >
 
                 <TextView
                     android:id="@+id/item_book_title"
@@ -46,21 +36,11 @@
                     android:ellipsize="end"
                     android:textSize="16sp"
                     android:text="Wallpaper"
-                    />
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerInParent="true" />
 
-                <TextView
-                    android:id="@+id/item_book_author"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="@color/text_without_palette"
-                    android:lines="1"
-                    android:ellipsize="end"
-                    android:textSize="15sp"
-                    android:text="test"
-                    />
 
-            </LinearLayout>
-        </FrameLayout>
-    </LinearLayout>
-</FrameLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

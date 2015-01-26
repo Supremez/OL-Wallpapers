@@ -4,7 +4,6 @@ import android.app.ActivityOptions;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,7 +38,9 @@ import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 public class BooksFragment extends Fragment {
 
-    public static SparseArray<Bitmap> photoCache = new SparseArray<Bitmap>(1);
+    public static SparseArray <ImageView> photoCache = new SparseArray<>(1);
+
+
 
     private ProgressDialog loadingDialog;
     private ArrayList<Book> books;
@@ -57,6 +58,7 @@ public class BooksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_books, container, false);
+
 
         // Configure the recyclerview
         bookRecycler = (RecyclerView) rootView.findViewById(R.id.fragment_last_books_recycler);
@@ -136,9 +138,12 @@ public class BooksFragment extends Fragment {
             detailIntent.putExtra("position", position);
             detailIntent.putExtra("selected_book", selectedBook);
 
+
+
             ImageView coverImage = (ImageView) v.findViewById(R.id.item_book_img);
             ((ViewGroup) coverImage.getParent()).setTransitionGroup(false);
-            photoCache.put(position, coverImage.getDrawingCache());
+            photoCache.put(position, coverImage);
+
 
             // Setup the transition to the detail activity
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),
